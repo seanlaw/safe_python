@@ -1,0 +1,21 @@
+name: Tests
+on:
+  push:
+    branches: '**'
+  pull_request:
+    branches: main
+jobs:
+  unit-testing:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+      - name: Set environment variables
+        run:  echo "PYTHON_VERSION=$(./python_version.sh)" >> $GITHUB_ENV
+        shell: bash
+      - name: Display Python Version
+        run: echo ${{ env.PYTHON_VERSION }}
+        shell: bash
