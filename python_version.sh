@@ -12,8 +12,8 @@ check_errs()
 
 get_safe_python_version()
 {
-    #HTML=$(url --location https://devguide.python.org/versions)
-    SAFE_PYTHON=$(curl --location https://devguide.python.org/versions | xmllint --html --xpath '//section[@id="supported-versions"]//table/tbody/tr[count(//section[@id="supported-versions"]//table/tbody/tr[td[.="security"]]/preceding-sibling::*)]/td[1]/p/text()' - 2> /dev/null)
+    #SAFE_PYTHON=$(curl --location https://devguide.python.org/versions | xmllint --html --xpath '//section[@id="supported-versions"]//table/tbody/tr[count(//section[@id="supported-versions"]//table/tbody/tr[td[.="security"]]/preceding-sibling::*)]/td[1]/p/text()' - 2> /dev/null)
+    SAFE_PYTHON=$(curl --location https://devguide.python.org/versions | xmllint --html --xpath '//section[@id="supported-versions"]//table/tbody/tr[count(//section[@id="supported-versions"]//table/tbody/tr[td[.="security"]]/preceding-sibling::*)]/td[1]/p/text()' -)
     #check_errs $?
 }
 
